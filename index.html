@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Melvin Raj — Creative Portfolio</title>
+
+  <meta name="description" content="Melvin Raj — Creative designer and visual storyteller.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+
+      background: rgba(11, 11, 11, 0.75);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 180px 6% 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      color: #999;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -7px;
+      max-width: 1100px;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 span {
+      color: #777;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      color: #aaa;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 15px 25px;
+      border: 1px solid #444;
+      border-radius: 100px;
+      transition: 0.3s;
+    }
+
+    .hero-button:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    /* WORK */
+
+    .work {
+      padding: 100px 6%;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 50px;
+      letter-spacing: -3px;
+    }
+
+    .section-number {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px 30px;
+    }
+
+    .project {
+      cursor: pointer;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #161616;
+      display: block;
+
+      transition:
+        transform 0.5s cubic-bezier(.2,.8,.2,1),
+        filter 0.5s ease;
+    }
+
+    .project:hover .project-image {
+      transform: scale(0.97);
+      filter: brightness(0.8);
+    }
+
+    .project:nth-child(2),
+    .project:nth-child(4) {
+      margin-top: 100px;
+    }
+
+    .project-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-top: 20px;
+    }
+
+    .project-title {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .project-type {
+      color: #777;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .project-number {
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 160px 6%;
+      max-width: 1400px;
+      margin: auto;
+      border-top: 1px solid #222;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+    }
+
+    .about h2 {
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .about-text {
+      font-size: 25px;
+      line-height: 1.4;
+      color: #bbb;
+      max-width: 750px;
+    }
+
+    .about-text strong {
+      color: white;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      margin-top: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 12px 18px;
+      border: 1px solid #333;
+      border-radius: 100px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      padding: 160px 6% 80px;
+      max-width: 1400px;
+      margin: auto;
+      border-top: 1px solid #222;
+    }
+
+    .contact h2 {
+      font-size: clamp(60px, 10vw, 130px);
+      line-height: 0.9;
+      letter-spacing: -6px;
+      margin-bottom: 50px;
+    }
+
+    .contact h2 span {
+      color: #777;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      padding: 14px 22px;
+      border: 1px solid #333;
+      border-radius: 100px;
+      color: #aaa;
+      transition: 0.3s;
+    }
+
+    .contact-link:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    footer {
+      padding: 30px 6%;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 13px;
+      border-top: 1px solid #1c1c1c;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 20px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 150px 20px 80px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .work,
+      .about,
+      .contact {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .section-title,
+      .about h2 {
+        font-size: 40px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .project:nth-child(2),
+      .project:nth-child(4) {
+        margin-top: 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-text {
+        font-size: 20px;
+      }
+
+      .contact h2 {
+        font-size: 65px;
+        letter-spacing: -4px;
+      }
+
+      footer {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">MELVIN RAJ</div>
+
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      Creative Designer / Visual Storyteller
+    </div>
+
+    <h1>
+      Ideas made<br>
+      <span>visual.</span>
+    </h1>
+
+    <p class="hero-description">
+      I'm Melvin Raj — a creative designer interested in branding,
+      visual storytelling, digital experiences and turning ideas
+      into things people remember.
+    </p>
+
+    <a href="#work" class="hero-button">
+      Explore my work ↓
+    </a>
+
+  </section>
+
+
+  <!-- WORK -->
+
+  <section class="work" id="work">
+
+    <div class="section-header">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="section-number">01 — 05</div>
+    </div>
+
+
+    <div class="projects">
+
+      <!-- PROJECT 01 -->
+
+      <div class="project">
+
+        <img
+          src="1.png"
+          alt="Creative design project"
+          class="project-image"
+        >
+
+        <div class="project-info">
+          <div>
+            <div class="project-title">
+              Safer & Sacrifice
+            </div>
+
+            <div class="project-type">
+              Brand / Apparel / Visual Identity
+            </div>
+          </div>
+
+          <div class="project-number">
+            01
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 02 -->
+
+      <div class="project">
+
+        <img
+          src="2.png"
+          alt="Creative design project"
+          class="project-image"
+        >
+
+        <div class="project-info">
+          <div>
+            <div class="project-title">
+              Visual Exploration
+            </div>
+
+            <div class="project-type">
+              Art Direction / Design
+            </div>
+          </div>
+
+          <div class="project-number">
+            02
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 03 -->
+
+      <div class="project">
+
+        <img
+          src="3.png"
+          alt="Creative design project"
+          class="project-image"
+        >
+
+        <div class="project-info">
+          <div>
+            <div class="project-title">
+              Creative Direction
+            </div>
+
+            <div class="project-type">
+              Concept / Visual Design
+            </div>
+          </div>
+
+          <div class="project-number">
+            03
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 04 -->
+
+      <div class="project">
+
+        <img
+          src="4.png"
+          alt="Creative design project"
+          class="project-image"
+        >
+
+        <div class="project-info">
+          <div>
+            <div class="project-title">
+              Digital Storytelling
+            </div>
+
+            <div class="project-type">
+              Digital / Creative
+            </div>
+          </div>
+
+          <div class="project-number">
+            04
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT 05 -->
+
+      <div class="project">
+
+        <img
+          src="5.png"
+          alt="Creative design project"
+          class="project-image"
+        >
+
+        <div class="project-info">
+          <div>
+            <div class="project-title">
+              Final Exploration
+            </div>
+
+            <div class="project-type">
+              Graphic Design / Concept
+            </div>
+          </div>
+
+          <div class="project-number">
+            05
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="about-grid">
+
+      <h2>
+        A little<br>
+        about me.
+      </h2>
+
+      <div>
+
+        <p class="about-text">
+          I'm <strong>Melvin Raj</strong>, a creative-minded
+          problem solver who enjoys working at the intersection
+          of design, technology and business.
+          <br><br>
+          I like taking an idea from a rough thought and turning
+          it into something clear, visual and engaging.
+          I'm currently exploring opportunities where I can
+          learn, create and contribute.
+        </p>
+
+
+        <div class="skills">
+
+          <div class="skill">Graphic Design</div>
+          <div class="skill">Branding</div>
+          <div class="skill">Visual Storytelling</div>
+          <div class="skill">Creative Strategy</div>
+          <div class="skill">UI / UX</div>
+          <div class="skill">AI Tools</div>
+          <div class="skill">Figma</div>
+          <div class="skill">Canva</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="eyebrow">
+      Let's create something.
+    </div>
+
+    <h2>
+      Have an idea?<br>
+      <span>Let's talk.</span>
+    </h2>
+
+    <div class="contact-links">
+
+      <!-- CHANGE THESE LINKS -->
+
+      <a
+        href="mailto:YOUR_EMAIL@gmail.com"
+        class="contact-link"
+      >
+        Email ↗️
+      </a>
+
+      <a
+        href="https://www.linkedin.com/"
+        target="_blank"
+        class="contact-link"
+      >
+        LinkedIn ↗️
+      </a>
+
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        class="contact-link"
+      >
+        Instagram ↗️
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      ©️ 2026 Melvin Raj
+    </div>
+
+    <div>
+      Designed & built by Melvin
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
